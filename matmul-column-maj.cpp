@@ -24,7 +24,7 @@ void matmul(float* C, const float* A, const float* B, unsigned int hA,
       double sum = 0;
       for (unsigned int k = 0; k < wA; ++k) {
         double a = A[i * wA + k];
-        double b = B[k * wB + j];
+        double b = B[j * hA + k];
         sum += a * b;
       }
       C[i * wB + j] = (float)sum;
@@ -47,9 +47,12 @@ Matrix Allocate2ndMatrix(int height, int width)
    * for Matrix B such that a column-major ordering is
    * performed.
    * Hint: a nested for-loop is probably needed. */
-  for(unsigned int i = 0; i < M.height * M.width; i++)
+  for(unsigned int i = 0; i < M.width; i++)
   {
-    M.elements[i] = (rand() / (float)RAND_MAX);
+    for(unsigned int j = 0; j < M.height; j++){
+      M.elements[i + (j * M.width)] = (rand() / (float)RAND_MAX);
+    }
+    
   }
   return M;
 }	

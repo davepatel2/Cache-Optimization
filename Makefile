@@ -1,5 +1,5 @@
 # Edit this line to change the optimization level
-CXXFLAGS = -g -Wall -O0
+CXXFLAGS = -g -Wall -O3
 CXX = g++
 CXXSRCS = matmul.cpp matmul-driver.cpp 
 COL_CXXSRCS = matmul-column-maj.cpp matmul-driver.cpp 
